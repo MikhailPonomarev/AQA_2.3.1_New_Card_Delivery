@@ -17,19 +17,19 @@ public class DataGenerator {
                 .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
-    public static String generateCity(String locale) {
+    public static String generateCity() {
         String[] cities = {"Казань", "Нижний Новгород", "Москва", "Санкт-Петербург", "Новосибирск", "Иваново"};
         Random random = new Random();
         int index = random.nextInt(cities.length);
         return cities[index];
     }
 
-    public static String generateName(String locale) {
+    public static String generateName() {
         Faker faker = new Faker(new Locale("ru"));
         return faker.name().fullName().replace("ё", "е");
     }
 
-    public static String generatePhone(String locale) {
+    public static String generatePhone() {
         Faker faker = new Faker(new Locale("ru"));
         return faker.phoneNumber().phoneNumber();
     }
@@ -38,8 +38,8 @@ public class DataGenerator {
         private Registration() {
         }
 
-        public static UserInfo generateUser(String locale) {
-            return new UserInfo(generateCity(locale),generateName(locale),generatePhone(locale));
+        public static UserInfo generateUser() {
+            return new UserInfo(generateCity(),generateName(),generatePhone());
         }
     }
 

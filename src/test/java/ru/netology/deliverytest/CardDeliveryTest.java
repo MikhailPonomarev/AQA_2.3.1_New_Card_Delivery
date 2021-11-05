@@ -20,7 +20,7 @@ public class CardDeliveryTest {
 
     @Test
     public void happyPath() {
-        var validUser = DataGenerator.Registration.generateUser("ru");
+        var validUser = DataGenerator.Registration.generateUser();
         var meetingDate = DataGenerator.generateDate(3);
         $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(meetingDate);
