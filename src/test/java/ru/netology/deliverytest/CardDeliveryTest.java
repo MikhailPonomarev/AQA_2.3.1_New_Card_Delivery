@@ -1,13 +1,15 @@
 package ru.netology.deliverytest;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.netology.data.DataGenerator;
 
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
+import static ru.netology.data.DataGenerator.Registration.generateUser;
+import static ru.netology.data.DataGenerator.generateDate;
 
 public class CardDeliveryTest {
 
@@ -18,9 +20,10 @@ public class CardDeliveryTest {
 
 
     @Test
+    @DisplayName("Happy Path")
     public void happyPath() {
-        var validUser = DataGenerator.Registration.generateUser();
-        var meetingDate = DataGenerator.generateDate(3);
+        var validUser = generateUser();
+        var meetingDate = generateDate(3);
         $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(meetingDate);
         $("[data-test-id='name'] input").setValue(validUser.getName());
@@ -32,10 +35,11 @@ public class CardDeliveryTest {
     }
 
     @Test
+    @DisplayName("Should change meeting date if user is the same")
     public void changingDeliveryDate() {
-        var validUser = DataGenerator.Registration.generateUser();
-        var firstMeetingDate = DataGenerator.generateDate(5);
-        var secondMeetingDate = DataGenerator.generateDate(10);
+        var validUser = generateUser();
+        var firstMeetingDate = generateDate(5);
+        var secondMeetingDate = generateDate(10);
         $("[data-test-id='city'] input").setValue(validUser.getCity());
         $("[data-test-id='date'] input").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id='name'] input").setValue(validUser.getName());
