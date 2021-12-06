@@ -25,14 +25,14 @@ repositories {
     mavenCentral()
 }
 
-configurations {
-    testCompile
-}
+//configurations {
+//    testCompile
+//}
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation 'com.codeborne:selenide:5.19.0'
-    testImplementation 'io.qameta.allure:allure-selenide:2.13.6'
+    testImplementation 'io.qameta.allure:allure-selenide:2.13.3'
     implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
 }
 
